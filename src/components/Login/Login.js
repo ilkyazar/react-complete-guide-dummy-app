@@ -59,6 +59,12 @@ const Login = (props) => {
     };
   }, []);
 
+  // Object Destructuring - to optimize useEffect
+
+  // Whenever just the value is changed, and validity is the same
+  // (e.g password was 7 char - valid, then it is 9 char - valid)
+  // Effect will not re-run, when using emailIsValid and passwordIsValid in dependencies
+
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
 
@@ -87,6 +93,12 @@ const Login = (props) => {
   const emailChangeHandler = (event) => {
     /* setEnteredEmail(event.target.value); */
     dispatchEmail({ type: 'USER_INPUT', val: event.target.value });
+
+    // useEffect is more accurate than
+    // setFormIsValid(emailState.isValid, passwordState.isValid)
+
+    // This might not have the latest state
+    // And function form is not used, but it depends on prev state
 
     /* setFormIsValid(
       event.target.value.includes('@') &&
