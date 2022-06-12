@@ -8,8 +8,8 @@ const MainHeader = (props) => {
     <header className={classes['main-header']}>
       <h1>A Typical Page</h1>
       <Navigation
-        /* isLoggedIn={props.isAuthenticated} */
-        onLogout={props.onLogout}
+      /* isLoggedIn={props.isAuthenticated} */
+      /* onLogout={props.onLogout} */
       />
     </header>
   );
